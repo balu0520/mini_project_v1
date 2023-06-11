@@ -36,6 +36,8 @@ class UserInstaPost extends Component {
     }
   }
 
+  //   testId="likeIcon"
+
   render() {
     const {postData} = this.props
     const {isLiked} = this.state
@@ -66,10 +68,22 @@ class UserInstaPost extends Component {
         <div className="post-details-container">
           <div className="react-icons-list">
             {isLiked && (
-              <FcLike className="icon like" onClick={this.onToggleLike} />
+              <button
+                type="button"
+                onClick={this.onToggleLike}
+                className="like-btn"
+              >
+                <FcLike className="icon" />
+              </button>
             )}
             {!isLiked && (
-              <BsHeart className="icon like" onClick={this.onToggleLike} />
+              <button
+                type="button"
+                onClick={this.onToggleLike}
+                className="like-btn"
+              >
+                <BsHeart className="icon" />
+              </button>
             )}
             <FaRegComment className="icon" />
             <BiShareAlt className="icon" />

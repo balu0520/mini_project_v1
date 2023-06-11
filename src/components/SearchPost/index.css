@@ -1,52 +1,4 @@
-/* .nav-bar-container {
-  padding: 20px;
-}
-.mobile-view-header {
-  display: flex;
-  align-items: center;
-}
-
-@media screen and (min-width: 992px) {
-  .mobile-view-header-scroll {
-    width: 40%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .mobile-view-search {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-  }
-  .mobile-view-scroll {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-  .search-link {
-    display: none;
-  }
-}
-@media screen and (max-width: 991px) {
-  .mobile-view-search {
-    display: none;
-  }
-  .mobile-view-header-scroll {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  .mobile-view-scroll {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-} */
-.header-section {
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,7 +7,7 @@
 }
 
 @media screen and (max-width: 766px) {
-  .header-section {
+  .header {
     justify-content: space-between;
   }
 }
@@ -63,18 +15,18 @@
   width: 59px;
   height: 30px;
 }
-.website-logo-heading-section {
+.website-logo-heading {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
   padding: 0;
 }
 @media screen and (min-width: 767px) {
-  .main-header-section {
+  .main-header {
     width: 80%;
     margin: auto;
   }
-  .header-section {
+  .header {
     padding-left: 25px;
     padding-right: 25px;
   }
@@ -82,30 +34,30 @@
     width: 50px;
     height: 22px;
   }
-  .website-logo-heading-section {
+  .website-logo-heading {
     font-size: 18px;
   }
 }
-.header-first-section {
+.header-first {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.hamburger-menu-button {
+.hamburger-menu-btn {
   background-color: transparent;
   outline: none;
   cursor: pointer;
   border-width: 0;
 }
 @media screen and (min-width: 767px) {
-  .hamburger-menu-button {
+  .hamburger-menu-btn {
     display: none;
   }
-  .btn-item {
+  .list-item {
     margin-right: 20px;
   }
 }
-.desktop-view-header-section {
+.desktop-view-header {
   list-style-type: none;
   display: flex;
   flex-direction: row;
@@ -114,7 +66,7 @@
   margin-left: auto;
   margin-bottom: 0;
 }
-.desktop-view-search-container-section {
+.desktop-view-search-container {
   border: 1px solid #dbdbdb;
   width: 214px;
   height: 35px;
@@ -122,7 +74,7 @@
   flex-direction: row;
   align-items: center;
 }
-.search-btn-container-section {
+.search-btn-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -131,19 +83,19 @@
   width: 100%;
   background-color: #dbdbdb;
 }
-.search-input-header {
+.search-input {
   font-size: 14px;
   border-width: 0;
 }
-.search-input-header:focus {
+.search-input:focus {
   outline: none;
 }
-.search-icon-button {
+.search-icon-btn {
   background-color: transparent;
   outline: none;
   border-width: 0;
 }
-.desktop-view-button {
+.desktop-view-btn {
   background-color: transparent;
   outline: none;
   cursor: pointer;
@@ -152,33 +104,33 @@
 }
 
 @media screen and (max-width: 766px) {
-  .desktop-view-header-section {
+  .desktop-view-header {
     display: none;
   }
-  .search-btn-container-section {
+  .search-btn-container {
     display: none;
   }
-  .search-input-header {
+  .search-input {
     display: none;
   }
-  .search-icon-button {
+  .search-icon-btn {
     display: none;
   }
-  .desktop-view-button {
+  .desktop-view-btn {
     display: none;
   }
-  .desktop-logout-button {
+  .desktop-logout-btn {
     display: none;
   }
 }
-.mobile-view-container-section {
+.mobile-view-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   margin-top: 10px;
 }
-.mobile-view-button {
+.mobile-view-btn {
   background-color: transparent;
   outline: none;
   cursor: pointer;
@@ -192,16 +144,16 @@
   border-width: 0;
 }
 @media screen and (min-width: 767px) {
-  .mobile-view-container-section {
+  .mobile-view-container {
     display: none;
   }
-  .mobile-view-button {
+  .mobile-view-btn {
     display: none;
   }
-  .mobile-logout-button {
+  .mobile-logout-btn {
     display: none;
   }
-  .mobile-view-close-button {
+  .mobile-view-close-btn {
     display: none;
   }
 }

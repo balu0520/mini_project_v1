@@ -161,6 +161,9 @@
     font-size: 14px;
   }
 }
-.like {
+.like-btn {
   cursor: pointer;
+  background-color: transparent;
+  border-width: 0;
+  outline: none;
 }
