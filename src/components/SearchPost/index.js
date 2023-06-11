@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -8,6 +8,12 @@ import './index.css'
 
 class SearchPost extends Component {
   state = {isShowMenu: false, searchInput: ''}
+
+  inputRef = React.createRef()
+
+  componentDidMount() {
+    this.inputRef.current.focus()
+  }
 
   onClickHamburger = () => {
     this.setState(prevState => ({
@@ -55,6 +61,7 @@ class SearchPost extends Component {
                 value={searchInput}
                 placeholder="Search Caption"
                 onChange={this.onChangeSearchInput}
+                ref={this.inputRef}
               />
               <div className="search-btn-container">
                 <button type="button" className="search-icon-btn">
