@@ -1,0 +1,135 @@
+.search-results-container {
+  width: 80%;
+  margin: auto;
+}
+@media screen and (max-width: 991px) {
+  .search-results-container {
+    width: 100%;
+  }
+}
+.each-post-container {
+  margin-bottom: 20px;
+}
+.each-post-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+.each-post-profile-pic-container {
+  border: 1.03px solid;
+  border-image-source: linear-gradient(
+    314.35deg,
+    #e20337 6.03%,
+    #c60188 40.88%,
+    #7700c3 73.23%
+  );
+  border-image-slice: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.each-post-profile-pic {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  margin: 1px;
+}
+.each-post-profile-name {
+  font-family: 'Roboto';
+  font-size: 16px;
+  margin-bottom: 0;
+  padding-left: 8px;
+}
+@media screen and (max-width: 991px) {
+  .each-post-profile-pic {
+    width: 28px;
+    height: 28px;
+  }
+  .each-post-profile-name {
+    font-size: 14px;
+  }
+}
+.each-post-image {
+  width: 100%;
+  max-height: 614px;
+}
+@media screen and (max-width: 991px) {
+  .each-post-image {
+    max-height: 514px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .each-post-image {
+    max-height: 420px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .each-post-image {
+    max-height: 375px;
+  }
+}
+.each-post-details-container {
+  width: 100%;
+  background-color: #ffffff;
+  padding-left: 24px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.post-react-icons-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.icon {
+  margin-right: 15px;
+  font-size: 20px;
+}
+.each-likes-count {
+  font-size: 16px;
+  font-family: 'Roboto';
+  text-align: left;
+}
+.each-caption {
+  font-size: 16px;
+  font-family: 'Roboto';
+  text-align: left;
+  font-weight: 400;
+}
+.each-commenter {
+  font-size: 16px;
+  font-family: 'Roboto';
+  text-align: left;
+}
+.each-comment {
+  font-size: 16px;
+  font-family: 'Roboto';
+  text-align: left;
+  font-weight: 400;
+}
+.each-created-at {
+  font-size: 16px;
+  font-family: 'Roboto';
+  text-align: left;
+  color: #989898;
+}
+@media screen and (max-width: 991px) {
+  .each-likes-count {
+    font-size: 14px;
+  }
+  .each-caption {
+    font-size: 14px;
+  }
+  .each-commenter {
+    font-size: 16px;
+  }
+  .each-comment {
+    font-size: 16px;
+  }
+  .each-created-at {
+    font-size: 14px;
+  }
+}

@@ -143,6 +143,36 @@
   cursor: pointer;
   border-width: 0;
 }
+.mobile-view-search-container {
+  border: 1px solid #dbdbdb;
+  width: 280px;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.search-input-mobile {
+  font-size: 14px;
+  border-width: 0;
+}
+
+.search-input-mobile:focus {
+  outline: none;
+}
+.mobile-view-search-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 100%;
+  background-color: #dbdbdb;
+}
+.search-icon-btn-mobile {
+  background-color: transparent;
+  outline: none;
+  border-width: 0;
+}
 @media screen and (min-width: 767px) {
   .mobile-view-container {
     display: none;
@@ -155,5 +185,73 @@
   }
   .mobile-view-close-btn {
     display: none;
+  }
+  .mobile-view-search-container {
+    display: none;
+  }
+  .search-input-mobile {
+    display: none;
+  }
+  .mobile-view-search-btn-container {
+    display: none;
+  }
+  .search-icon-btn-mobile {
+    display: none;
+  }
+}
+.post-initial-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.post-initial-view-heading {
+  font-size: 20px;
+  font-weight: 400;
+  color: #dbdbdb;
+}
+.post-failure-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.post-failure-view-heading {
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 500;
+  color: #262626;
+}
+.post-failure-view-para {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
+  color: #989898;
+}
+.post-failure-view-image {
+  width: 258px;
+  height: 210px;
+}
+@media screen and (min-width: 767px) {
+  .post-failure-view-heading {
+    font-size: 32px;
+  }
+  .post-failure-view-para {
+    font-size: 20px;
+  }
+  .post-failure-view-image {
+    width: 500px;
+    height: 409px;
+  }
+}
+.search-results-container {
+  width: 80%;
+  margin: auto;
+}
+@media screen and (max-width: 991px) {
+  .search-results-container {
+    width: 100%;
   }
 }
