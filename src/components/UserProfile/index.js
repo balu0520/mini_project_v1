@@ -26,7 +26,7 @@ class UserProfile extends Component {
   getProfileData = data => ({
     id: data.id,
     userId: data.user_id,
-    userName: data.userName,
+    userName: data.user_name,
     profilePic: data.profile_pic,
     followersCount: data.followers_count,
     followingCount: data.following_count,
@@ -38,9 +38,9 @@ class UserProfile extends Component {
 
   renderUserProfileApi = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
-    const {params} = this.props
-    const {match} = params
-    const {id} = match
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -67,7 +67,7 @@ class UserProfile extends Component {
   }
 
   renderMyProfileLoadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )

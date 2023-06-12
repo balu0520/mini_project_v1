@@ -1,0 +1,33 @@
+.not-found-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.not-found-image {
+  width: 269px;
+  height: 296px;
+}
+.not-found-heading {
+  font-size: 32px;
+}
+.not-found-para {
+  font-size: 20px;
+}
+@media screen and (max-width: 991px) {
+  .not-found-image {
+    width: 157px;
+    height: 173px;
+  }
+  .not-found-heading {
+    font-size: 20px;
+    font-weight: 500;
+    color: #262626;
+  }
+  .not-found-para {
+    font-size: 16px;
+    font-weight: 400;
+    color: #989898;
+  }
+}

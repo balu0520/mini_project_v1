@@ -1,4 +1,7 @@
-.header {
+.post-container {
+  min-height: 100vh;
+}
+/* .header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -198,7 +201,7 @@
   .search-icon-btn-mobile {
     display: none;
   }
-}
+} */
 .post-initial-view {
   display: flex;
   flex-direction: column;
@@ -217,6 +220,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  min-height: 80vh;
 }
 .post-failure-view-heading {
   font-family: 'Roboto';
@@ -254,4 +258,8 @@
   .search-results-container {
     width: 100%;
   }
+}
+.search-results-container {
+  list-style-type: none;
+  padding-left: 0;
 }

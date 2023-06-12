@@ -4,7 +4,9 @@ import {BiCamera} from 'react-icons/bi'
 
 const Profile = props => {
   const {userProfileData} = props
+  const {userDetails} = userProfileData
   const {
+    userId,
     userName,
     profilePic,
     followersCount,
@@ -13,7 +15,8 @@ const Profile = props => {
     posts,
     postsCount,
     stories,
-  } = userProfileData
+  } = userDetails
+  console.log(userName)
   const noPosts = postsCount === 0
   return (
     <div className="user-profile-container">
@@ -37,7 +40,7 @@ const Profile = props => {
               {followingCount} <span className="follow">following</span>
             </h1>
           </div>
-          <h1 className="user-profile-desktop-view-sub-heading">{userName}</h1>
+          <h1 className="user-profile-desktop-view-sub-heading">{userId}</h1>
           <h1 className="user-profile-desktop-view-user-bio">{userBio}</h1>
         </div>
       </div>
@@ -107,6 +110,7 @@ const Profile = props => {
                 src={eachPost.image}
                 alt="user post"
                 className="m-1 user-profile-post-image"
+                key={eachPost.id}
               />
             ))}
           </div>

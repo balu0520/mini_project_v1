@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {FaRegComment} from 'react-icons/fa'
 import {BsHeart} from 'react-icons/bs'
@@ -49,6 +50,7 @@ class UserInstaPost extends Component {
       likesCount,
       comments,
       createdAt,
+      userId,
     } = postData
     const {imageUrl, caption} = postDetails
     const likes = isLiked ? likesCount + 1 : likesCount
@@ -62,7 +64,9 @@ class UserInstaPost extends Component {
               alt="post author profile"
             />
           </div>
-          <p className="post-profile-name">{userName}</p>
+          <Link className="nav-link" to={`/users/${userId}`}>
+            <p className="post-profile-name">{userName}</p>
+          </Link>
         </div>
         <img src={imageUrl} alt="post" className="post-image" />
         <div className="post-details-container">
@@ -72,6 +76,7 @@ class UserInstaPost extends Component {
                 type="button"
                 onClick={this.onToggleLike}
                 className="like-btn"
+                testid="unLikeIcon"
               >
                 <FcLike className="icon" />
               </button>
@@ -81,6 +86,7 @@ class UserInstaPost extends Component {
                 type="button"
                 onClick={this.onToggleLike}
                 className="like-btn"
+                testid="likeIcon"
               >
                 <BsHeart className="icon" />
               </button>
@@ -88,15 +94,17 @@ class UserInstaPost extends Component {
             <FaRegComment className="icon" />
             <BiShareAlt className="icon" />
           </div>
-          <h1 className="likes-count">{likes} likes</h1>
-          <h1 className="caption">{caption}</h1>
-          {comments.map(eachComment => (
-            <h1 className="commenter" key={eachComment.userId}>
-              {eachComment.userName}{' '}
-              <span className="comment">{eachComment.comment}</span>
-            </h1>
-          ))}
-          <h1 className="created-at">{createdAt}</h1>
+          <p className="likes-count">{likes} likes</p>
+          <p className="caption">{caption}</p>
+          <ul className="comments-list">
+            {comments.map(eachComment => (
+              <li className="comment-list-item" key={eachComment.userId}>
+                <p className="commenter">{eachComment.userName}</p>
+                <p className="comment">{eachComment.comment}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="created-at">{createdAt}</p>
         </div>
       </div>
     )

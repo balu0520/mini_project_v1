@@ -105,3 +105,13 @@
     height: 19px;
   }
 }
+.home-failure-view-image {
+  height: 273px;
+  width: 560px;
+}
+@media screen and( max-width:991px) {
+  .home-failure-view-image {
+    height: 120px;
+    width: 250px;
+  }
+}

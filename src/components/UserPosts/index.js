@@ -2,7 +2,6 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import Cookies from 'js-cookie'
-import {RiAlertFill} from 'react-icons/ri'
 import UserInstaPost from '../UserInstaPost'
 import './index.css'
 
@@ -77,7 +76,11 @@ class UserPosts extends Component {
 
   renderPostFailureView = () => (
     <div className="post-failure-container">
-      <RiAlertFill className="post-failure-icon bg-primary" />
+      <img
+        src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686394852/failure_logo_t31neg.png"
+        alt="failure-view"
+        className="user-post-failure-icon"
+      />
       <h1 className="post-failure-icon-heading">
         Something Went Wrong. Please try again
       </h1>
@@ -86,13 +89,13 @@ class UserPosts extends Component {
         className="btn btn-primary"
         onClick={this.onClickTryPost}
       >
-        Retry
+        Try again
       </button>
     </div>
   )
 
   renderPostLoadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )
@@ -100,11 +103,13 @@ class UserPosts extends Component {
   renderPostSuccessView = () => {
     const {posts} = this.state
     return (
-      <div className="posts-container">
+      <ul className="posts-container">
         {posts.map(eachPost => (
-          <UserInstaPost key={eachPost.postId} postData={eachPost} />
+          <li>
+            <UserInstaPost key={eachPost.postId} postData={eachPost} />
+          </li>
         ))}
-      </div>
+      </ul>
     )
   }
 

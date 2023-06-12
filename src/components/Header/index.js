@@ -7,12 +7,16 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import './index.css'
 
 class Header extends Component {
-  state = {isShowMenu: false}
+  state = {isShowMenu: false, searchInput: ''}
 
   onClickLogout = () => {
     const {history} = this.props
     Cookies.remove('jwt_token')
     history.replace('/login')
+  }
+
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
   }
 
   onClickHamburger = () => {
@@ -21,13 +25,15 @@ class Header extends Component {
     }))
   }
 
-  onClickSearchInput = () => {
+  onClickSearch = () => {
+    const {searchInput} = this.state
     const {history} = this.props
-    history.replace('/search')
+    const path = `/search/${searchInput}`
+    history.replace(path)
   }
 
   render() {
-    const {isShowMenu} = this.state
+    const {isShowMenu, searchInput} = this.state
     return (
       <nav className="main-header-section">
         <div className="header-section">
@@ -54,10 +60,16 @@ class Header extends Component {
                 type="search"
                 className="search-input-header"
                 placeholder="Search Caption"
-                onClick={this.onClickSearchInput}
+                onChange={this.onChangeSearchInput}
+                value={searchInput}
               />
               <div className="search-btn-container-section">
-                <button type="button" className="search-icon-button">
+                <button
+                  type="button"
+                  className="search-icon-button"
+                  testid="searchIcon"
+                  onClick={this.onClickSearch}
+                >
                   <FaSearch width="10" height="10" color="#989898" />
                 </button>
               </div>
@@ -95,7 +107,11 @@ class Header extends Component {
               </button>
             </Link>
             <Link to="/search" className="nav-link">
-              <button type="button" className="mobile-view-button">
+              <button
+                type="button"
+                className="mobile-view-button"
+                onClick={this.onClickSearch}
+              >
                 Search
               </button>
             </Link>

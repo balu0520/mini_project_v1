@@ -167,3 +167,11 @@
   border-width: 0;
   outline: none;
 }
+.comments-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.comment-list-item {
+  display: flex;
+  align-items: center;
+}

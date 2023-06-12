@@ -64,6 +64,7 @@ class LoginForm extends Component {
           className="password-input-field"
           value={password}
           onChange={this.onChangePassword}
+          placeholder="type rahul@2021"
         />
       </>
     )
@@ -82,6 +83,7 @@ class LoginForm extends Component {
           className="username-input-field"
           value={username}
           onChange={this.onChangeUsername}
+          placeholder="type rahul"
         />
       </>
     )
@@ -115,7 +117,7 @@ class LoginForm extends Component {
               className="login-website-logo-desktop-image"
               alt="website logo"
             />
-            <h1 className="mobile-view-heading">Insta Share</h1>
+            <h1 className="desktop-view-heading">Insta Share</h1>
           </div>
           <div className="input-container">{this.renderUsernameField()}</div>
           <div className="input-container">{this.renderPasswordField()}</div>

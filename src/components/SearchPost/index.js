@@ -1,11 +1,8 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {GiHamburgerMenu} from 'react-icons/gi'
-import {FaSearch} from 'react-icons/fa'
-import {AiFillCloseCircle} from 'react-icons/ai'
 import {GrSearchAdvanced} from 'react-icons/gr'
 import Loader from 'react-loader-spinner'
+import Header from '../Header'
 import SearchResults from '../SearchResults'
 import './index.css'
 
@@ -18,16 +15,12 @@ const apiStatusConstants = {
 
 class SearchPost extends Component {
   state = {
-    isShowMenu: false,
-    searchInput: '',
     apiStatus: apiStatusConstants.initial,
     postsData: [],
   }
 
-  inputRef = React.createRef()
-
   componentDidMount() {
-    this.inputRef.current.focus()
+    this.getSearchPosts()
   }
 
   getPostDetails = data => ({
@@ -60,7 +53,9 @@ class SearchPost extends Component {
 
   getSearchPosts = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
-    const {searchInput} = this.state
+    const {match} = this.props
+    const {params} = match
+    const {searchId} = params
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -68,10 +63,10 @@ class SearchPost extends Component {
         Authorization: `bearer ${jwtToken}`,
       },
     }
-    const apiUrl = `https://apis.ccbp.in/insta-share/posts?search=${searchInput}`
+    const apiUrl = `https://apis.ccbp.in/insta-share/posts?search=${searchId}`
     const response = await fetch(apiUrl, options)
-    if (response.ok === true) {
-      const data = await response.json()
+    const data = await response.json()
+    if (data.posts.length !== 0) {
       const formattedData = this.getSearchPostData(data.posts)
       this.setState({
         apiStatus: apiStatusConstants.success,
@@ -88,25 +83,11 @@ class SearchPost extends Component {
     }))
   }
 
-  onClickLogout = () => {
-    const {history} = this.props
-    Cookies.remove('jwt_token')
-    history.replace('/login')
-  }
-
-  onChangeSearchInput = event => {
-    this.setState({searchInput: event.target.value})
-  }
-
-  onClickSearch = () => {
-    this.getSearchPosts()
-  }
-
-  renderPostFailureView = () => (
+  renderSearchPostFailureView = () => (
     <div className="post-failure-view">
       <img
         src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686545197/search-not-found_wnkk2w.png"
-        alt="failure view"
+        alt="search not found"
         className="post-failure-view-image"
       />
       <h1 className="post-failure-view-heading">Search Not Found</h1>
@@ -125,8 +106,10 @@ class SearchPost extends Component {
     </div>
   )
 
+  //   testid="loader"
+
   renderPostLoadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )
@@ -134,11 +117,13 @@ class SearchPost extends Component {
   renderPostSuccessView = () => {
     const {postsData} = this.state
     return (
-      <div className="search-results-container">
+      <ul className="search-results-container">
         {postsData.map(eachPost => (
-          <SearchResults postData={eachPost} key={eachPost.postId} />
+          <li>
+            <SearchResults postData={eachPost} key={eachPost.postId} />
+          </li>
         ))}
-      </div>
+      </ul>
     )
   }
 
@@ -150,17 +135,16 @@ class SearchPost extends Component {
       case apiStatusConstants.inProgress:
         return this.renderPostLoadingView()
       case apiStatusConstants.failure:
-        return this.renderPostFailureView()
+        return this.renderSearchPostFailureView()
       default:
         return this.renderPostInitialView()
     }
   }
 
   render() {
-    const {isShowMenu, searchInput} = this.state
     return (
-      <div>
-        <nav className="main-header">
+      <div className="post-container">
+        {/* <nav className="main-header">
           <div className="header">
             <div className="header-first">
               <Link to="/" className="nav-link">
@@ -194,6 +178,7 @@ class SearchPost extends Component {
                     type="button"
                     className="search-icon-btn"
                     onClick={this.onClickSearch}
+                    testid="searchIcon"
                   >
                     <FaSearch width="10" height="10" color="#989898" />
                   </button>
@@ -271,12 +256,14 @@ class SearchPost extends Component {
                 type="button"
                 className="search-icon-btn-mobile"
                 onClick={this.onClickSearch}
+                testid="searchIcon"
               >
                 <FaSearch width="10" height="10" color="#989898" />
               </button>
             </div>
           </div>
-        </nav>
+        </nav> */}
+        <Header />
         {this.renderPost()}
       </div>
     )

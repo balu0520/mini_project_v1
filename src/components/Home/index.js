@@ -65,7 +65,7 @@ class Home extends Component {
   //   testid="loader"
 
   renderSlickLoadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )
@@ -117,7 +117,11 @@ class Home extends Component {
 
   renderSlickFailureView = () => (
     <div className="slick-failure-container">
-      <RiAlertFill className="slick-failure-icon bg-primary" />
+      <img
+        src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686394852/failure_logo_t31neg.png"
+        alt="failure view"
+        className="home-failure-view-image"
+      />
       <h1 className="slick-failure-icon-heading">
         Something Went Wrong. Please try again
       </h1>
@@ -126,7 +130,7 @@ class Home extends Component {
         className="btn btn-primary"
         onClick={this.onClickTrySlick}
       >
-        Retry
+        Try again
       </button>
     </div>
   )
