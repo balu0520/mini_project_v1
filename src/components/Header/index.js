@@ -7,7 +7,7 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import './index.css'
 
 class Header extends Component {
-  state = {isShowMenu: false, searchInput: ''}
+  state = {isShowMenu: false, searchInput: '', showSearchBtn: false}
 
   onClickLogout = () => {
     const {history} = this.props
@@ -25,6 +25,10 @@ class Header extends Component {
     }))
   }
 
+  onClickSearchBtn = () => {
+    this.setState(prevState => ({showSearchBtn: !prevState.showSearchBtn}))
+  }
+
   onClickSearch = () => {
     const {searchInput} = this.state
     const {history} = this.props
@@ -33,7 +37,11 @@ class Header extends Component {
   }
 
   render() {
-    const {isShowMenu, searchInput} = this.state
+    const {isShowMenu, searchInput, showSearchBtn} = this.state
+    let show = false
+    if (isShowMenu && showSearchBtn) {
+      show = true
+    }
     return (
       <nav className="main-header-section">
         <div className="header-section">
@@ -63,12 +71,13 @@ class Header extends Component {
                 onChange={this.onChangeSearchInput}
                 value={searchInput}
               />
+              {/* testid="searchIcon" */}
               <div className="search-btn-container-section">
                 <button
                   type="button"
                   className="search-icon-button"
-                  testid="searchIcon"
                   onClick={this.onClickSearch}
+                  testid="searchIcon"
                 >
                   <FaSearch width="10" height="10" color="#989898" />
                 </button>
@@ -106,15 +115,13 @@ class Header extends Component {
                 Home
               </button>
             </Link>
-            <Link to="/search" className="nav-link">
-              <button
-                type="button"
-                className="mobile-view-button"
-                onClick={this.onClickSearch}
-              >
-                Search
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="mobile-view-button"
+              onClick={this.onClickSearchBtn}
+            >
+              Search
+            </button>
             <Link to="/my-profile" className="nav-link">
               <button type="button" className="mobile-view-button">
                 Profile
@@ -134,6 +141,30 @@ class Header extends Component {
             >
               <AiFillCloseCircle height="20" width="20" />
             </button>
+          </div>
+        )}
+        {show && (
+          <div className="mobile-view-search-main-container-section">
+            <div className="mobile-view-search-container-section">
+              <input
+                type="search"
+                className="mobile-search-input-header"
+                placeholder="Search Caption"
+                onChange={this.onChangeSearchInput}
+                value={searchInput}
+              />
+              {/* testid="searchIcon" */}
+              <div className="mobile-search-btn-container-section">
+                <button
+                  type="button"
+                  className="mobile-search-icon-button"
+                  onClick={this.onClickSearch}
+                  testid="searchIcon"
+                >
+                  <FaSearch width="10" height="10" color="#989898" />
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </nav>

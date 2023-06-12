@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {FcLike} from 'react-icons/fc'
 import {FaRegComment} from 'react-icons/fa'
@@ -9,12 +10,17 @@ import './index.css'
 class SearchResults extends Component {
   state = {isLiked: false}
 
-  liking = async () => {
-    await this.setState(prevState => ({isLiked: !prevState.isLiked}))
+  onClickLike = async () => {
+    await this.setState({isLiked: true})
+    this.onToggleLike()
+  }
+
+  onClickUnLike = async () => {
+    await this.setState({isLiked: false})
+    this.onToggleLike()
   }
 
   onToggleLike = async () => {
-    this.liking()
     const {isLiked} = this.state
     const {postData} = this.props
     const stat = {like_status: isLiked}
@@ -39,6 +45,7 @@ class SearchResults extends Component {
     const {postData} = this.props
     const {isLiked} = this.state
     const {
+      userId,
       postId,
       userName,
       profilePic,
@@ -59,32 +66,35 @@ class SearchResults extends Component {
               alt="post author profile"
             />
           </div>
-          <p className="each-post-profile-name">{userName}</p>
+          <Link className="nav-link" to={`/users/${userId}`}>
+            <p className="each-post-profile-name">{userName}</p>
+          </Link>
         </div>
         <img src={imageUrl} alt="post" className="each-post-image" />
         <div className="each-post-details-container">
           <div className="post-react-icons-list">
+            {/* testid="unLikeIcon" */}
             {isLiked && (
               <button
                 type="button"
-                onClick={this.onToggleLike}
+                onClick={this.onClickUnLike}
                 className="like-btn"
                 testid="unLikeIcon"
               >
-                <FcLike className="icon" />
+                <FcLike className="each-icon" />
               </button>
             )}
+            {/* testid="likeIcon" */}
             {!isLiked && (
               <button
                 type="button"
-                onClick={this.onToggleLike}
+                onClick={this.onClickLike}
                 className="like-btn"
                 testid="likeIcon"
               >
-                <BsHeart className="icon" />
+                <BsHeart className="each-icon" />
               </button>
             )}
-            <FcLike className="each-icon" />
             <FaRegComment className="each-icon" />
             <BiShareAlt className="each-icon" />
           </div>
@@ -92,11 +102,14 @@ class SearchResults extends Component {
           <p className="each-caption">{caption}</p>
           <ul className="comments-list-search">
             {comments.map(eachComment => (
-              <li className="comments-list-item-search">
-                <p className="each-commenter" key={eachComment.userId}>
-                  {eachComment.userName}
+              <li
+                className="comments-list-item-search"
+                key={eachComment.userId}
+              >
+                <p className="each-comment">
+                  <span className="each-commenter">{eachComment.userName}</span>
+                  {eachComment.comment}
                 </p>
-                <p className="each-comment">{eachComment.comment}</p>
               </li>
             ))}
           </ul>

@@ -9,6 +9,8 @@
 }
 .each-post-container {
   margin-bottom: 20px;
+  border: 1px solid #dbdbdb;
+  padding: 10px;
 }
 .each-post-heading {
   display: flex;
@@ -84,7 +86,7 @@
   align-items: center;
   margin-bottom: 5px;
 }
-.icon {
+.each-icon {
   margin-right: 15px;
   font-size: 20px;
 }
@@ -138,7 +140,4 @@
   padding-left: 0;
 }
 .comments-list-item-search {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }

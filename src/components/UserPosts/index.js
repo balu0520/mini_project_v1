@@ -78,7 +78,7 @@ class UserPosts extends Component {
     <div className="post-failure-container">
       <img
         src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686394852/failure_logo_t31neg.png"
-        alt="failure-view"
+        alt="failure view"
         className="user-post-failure-icon"
       />
       <h1 className="post-failure-icon-heading">
@@ -94,6 +94,8 @@ class UserPosts extends Component {
     </div>
   )
 
+  //   testid="loader"
+
   renderPostLoadingView = () => (
     <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
@@ -105,7 +107,7 @@ class UserPosts extends Component {
     return (
       <ul className="posts-container">
         {posts.map(eachPost => (
-          <li>
+          <li key={eachPost.postId}>
             <UserInstaPost key={eachPost.postId} postData={eachPost} />
           </li>
         ))}

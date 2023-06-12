@@ -3,7 +3,6 @@ import {Redirect} from 'react-router-dom'
 import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import {RiAlertFill} from 'react-icons/ri'
 import Header from '../Header'
 import UserPosts from '../UserPosts'
 

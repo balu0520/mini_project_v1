@@ -47,6 +47,34 @@
   display: flex;
   flex-direction: row;
 }
+.user-profile-desktop-view-follow-heading-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .user-profile-desktop-view-follow-heading-container {
+    display: none;
+  }
+  .user-profile-desktop-view-follow-container {
+    display: none;
+  }
+  .user-profile-desktop-view-follow-heading {
+    display: none;
+  }
+  .user-profile-desktop-view-follow-heading-1 {
+    display: none;
+  }
+  .follow {
+    display: none;
+  }
+  .user-profile-desktop-view-sub-heading {
+    display: none;
+  }
+  .user-profile-desktop-view-user-bio {
+    display: none;
+  }
+}
 .user-profile-desktop-view-follow-heading {
   font-size: 16px;
   font-family: 'Roboto';
@@ -55,10 +83,10 @@
 .user-profile-desktop-view-follow-heading-1 {
   font-size: 16px;
   font-family: 'Roboto';
-  /* margin-right: px; */
 }
 .follow {
   font-weight: 400;
+  padding-left: 2px;
 }
 .user-profile-desktop-view-sub-heading {
   font-size: 16px;
@@ -156,6 +184,8 @@
 .user-profile-posts-container {
   flex-wrap: wrap;
   justify-content: space-around;
+  list-style-type: none;
+  padding-left: 0;
 }
 .user-posts-section-heading {
   font-size: 24px;
@@ -204,4 +234,8 @@
 .user-profile-no-posts-heading {
   font-size: 32px;
   font-weight: 300;
+}
+.stories-list {
+  list-style-type: none;
+  padding-left: 0;
 }

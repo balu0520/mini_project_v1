@@ -11,12 +11,17 @@ import './index.css'
 class UserInstaPost extends Component {
   state = {isLiked: false}
 
-  liking = async () => {
-    await this.setState(prevState => ({isLiked: !prevState.isLiked}))
+  onClickLike = async () => {
+    await this.setState({isLiked: true})
+    this.onToggleLike()
+  }
+
+  onClickUnLike = async () => {
+    await this.setState({isLiked: false})
+    this.onToggleLike()
   }
 
   onToggleLike = async () => {
-    this.liking()
     const {isLiked} = this.state
     const {postData} = this.props
     const stat = {like_status: isLiked}
@@ -71,20 +76,22 @@ class UserInstaPost extends Component {
         <img src={imageUrl} alt="post" className="post-image" />
         <div className="post-details-container">
           <div className="react-icons-list">
+            {/* testid="unLikeIcon" */}
             {isLiked && (
               <button
                 type="button"
-                onClick={this.onToggleLike}
+                onClick={this.onClickUnLike}
                 className="like-btn"
                 testid="unLikeIcon"
               >
                 <FcLike className="icon" />
               </button>
             )}
+            {/* testid="likeIcon" */}
             {!isLiked && (
               <button
                 type="button"
-                onClick={this.onToggleLike}
+                onClick={this.onClickLike}
                 className="like-btn"
                 testid="likeIcon"
               >

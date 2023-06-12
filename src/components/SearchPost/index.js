@@ -11,6 +11,7 @@ const apiStatusConstants = {
   success: 'SUCCESS',
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
+  failed: 'FAILED',
 }
 
 class SearchPost extends Component {
@@ -65,15 +66,19 @@ class SearchPost extends Component {
     }
     const apiUrl = `https://apis.ccbp.in/insta-share/posts?search=${searchId}`
     const response = await fetch(apiUrl, options)
-    const data = await response.json()
-    if (data.posts.length !== 0) {
-      const formattedData = this.getSearchPostData(data.posts)
-      this.setState({
-        apiStatus: apiStatusConstants.success,
-        postsData: formattedData,
-      })
+    if (response.ok === true) {
+      const data = await response.json()
+      if (data.posts.length !== 0) {
+        const formattedData = this.getSearchPostData(data.posts)
+        this.setState({
+          apiStatus: apiStatusConstants.success,
+          postsData: formattedData,
+        })
+      } else {
+        this.setState({apiStatus: apiStatusConstants.failure})
+      }
     } else {
-      this.setState({apiStatus: apiStatusConstants.failure})
+      this.setState({apiStatus: apiStatusConstants.failed})
     }
   }
 
@@ -97,6 +102,30 @@ class SearchPost extends Component {
     </div>
   )
 
+  onClickRetry = () => {
+    this.getSearchPosts()
+  }
+
+  renderSearchPostFailedView = () => (
+    <div className="search-failure-container">
+      <img
+        src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686394852/failure_logo_t31neg.png"
+        alt="failure view"
+        className="search-failure-icon"
+      />
+      <p className="search-failure-heading">
+        Something went wrong. Please try again
+      </p>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={this.onClickRetry}
+      >
+        Try again
+      </button>
+    </div>
+  )
+
   renderPostInitialView = () => (
     <div className="post-initial-view">
       <GrSearchAdvanced width="36" height="36" color="#DBDBDB" />
@@ -109,7 +138,7 @@ class SearchPost extends Component {
   //   testid="loader"
 
   renderPostLoadingView = () => (
-    <div className="loader-container" testid="loader">
+    <div className="loader-container">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )
@@ -117,13 +146,16 @@ class SearchPost extends Component {
   renderPostSuccessView = () => {
     const {postsData} = this.state
     return (
-      <ul className="search-results-container">
-        {postsData.map(eachPost => (
-          <li>
-            <SearchResults postData={eachPost} key={eachPost.postId} />
-          </li>
-        ))}
-      </ul>
+      <div className="search-container">
+        <h1 className="search-results-heading">Search Results</h1>
+        <ul className="search-results-main-container">
+          {postsData.map(eachPost => (
+            <li key={eachPost.postId} className="">
+              <SearchResults key={eachPost.postId} postData={eachPost} />
+            </li>
+          ))}
+        </ul>
+      </div>
     )
   }
 
@@ -136,6 +168,8 @@ class SearchPost extends Component {
         return this.renderPostLoadingView()
       case apiStatusConstants.failure:
         return this.renderSearchPostFailureView()
+      case apiStatusConstants.failed:
+        return this.renderSearchPostFailedView()
       default:
         return this.renderPostInitialView()
     }
@@ -143,129 +177,10 @@ class SearchPost extends Component {
 
   render() {
     return (
-      <div className="post-container">
-        {/* <nav className="main-header">
-          <div className="header">
-            <div className="header-first">
-              <Link to="/" className="nav-link">
-                <img
-                  src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686373787/My%20Brand/website_logo_gin18w.png"
-                  alt="website logo"
-                  className="website-logo-image"
-                />
-              </Link>
-              <h1 className="website-logo-heading ml-2">Insta Share</h1>
-            </div>
-            <button
-              type="button"
-              className="hamburger-menu-btn"
-              onClick={this.onClickHamburger}
-            >
-              <GiHamburgerMenu />
-            </button>
-            <ul className="desktop-view-header">
-              <li className="desktop-view-search-container list-item">
-                <input
-                  type="search"
-                  className="search-input"
-                  value={searchInput}
-                  placeholder="Search Caption"
-                  onChange={this.onChangeSearchInput}
-                  ref={this.inputRef}
-                />
-                <div className="search-btn-container">
-                  <button
-                    type="button"
-                    className="search-icon-btn"
-                    onClick={this.onClickSearch}
-                    testid="searchIcon"
-                  >
-                    <FaSearch width="10" height="10" color="#989898" />
-                  </button>
-                </div>
-              </li>
-              <li className="list-item">
-                <Link to="/" className="nav-link">
-                  <button type="button" className="desktop-view-btn">
-                    Home
-                  </button>
-                </Link>
-              </li>
-              <li className="list-item">
-                <Link to="/my-profile" className="nav-link">
-                  <button type="button" className="desktop-view-btn">
-                    Profile
-                  </button>
-                </Link>
-              </li>
-              <li className="list-item">
-                <button
-                  type="button"
-                  className="btn btn-primary desktop-logout-btn"
-                  onClick={this.onClickLogout}
-                >
-                  Logout
-                </button>
-              </li>
-            </ul>
-          </div>
-          {isShowMenu && (
-            <div className="mobile-view-container">
-              <Link to="/" className="nav-link">
-                <button type="button" className="mobile-view-btn">
-                  Home
-                </button>
-              </Link>
-              <Link to="/search" className="nav-link">
-                <button type="button" className="mobile-view-btn">
-                  Search
-                </button>
-              </Link>
-              <Link to="/my-profile" className="nav-link">
-                <button type="button" className="mobile-view-btn">
-                  Profile
-                </button>
-              </Link>
-              <button
-                type="button"
-                className="btn btn-primary mobile-logout-btn"
-                onClick={this.onClickLogout}
-              >
-                Logout
-              </button>
-              <button
-                type="button"
-                className="mobile-view-close-btn"
-                onClick={this.onClickHamburger}
-              >
-                <AiFillCloseCircle height="20" width="20" />
-              </button>
-            </div>
-          )}
-          <div className="mobile-view-search-container">
-            <input
-              type="search"
-              className="search-input-mobile"
-              value={searchInput}
-              placeholder="Search Caption"
-              onChange={this.onChangeSearchInput}
-              ref={this.inputRef}
-            />
-            <div className="mobile-view-search-btn-container">
-              <button
-                type="button"
-                className="search-icon-btn-mobile"
-                onClick={this.onClickSearch}
-                testid="searchIcon"
-              >
-                <FaSearch width="10" height="10" color="#989898" />
-              </button>
-            </div>
-          </div>
-        </nav> */}
+      <>
         <Header />
-        {this.renderPost()}
-      </div>
+        <div className="post-container">{this.renderPost()}</div>
+      </>
     )
   }
 }

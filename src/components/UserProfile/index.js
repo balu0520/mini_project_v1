@@ -63,8 +63,10 @@ class UserProfile extends Component {
   }
 
   onClickRetry = () => {
-    this.renderMyProfileApi()
+    this.renderUserProfileApi()
   }
+
+  //   testid="loader"
 
   renderMyProfileLoadingView = () => (
     <div className="loader-container" testid="loader">
@@ -73,21 +75,21 @@ class UserProfile extends Component {
   )
 
   renderMyProfileFailureView = () => (
-    <div className="failure-profile-container">
+    <div className="failure-user-profile-container">
       <img
         src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686394852/failure_logo_t31neg.png"
         alt="failure view"
-        className="failure-profile-icon"
+        className="failure-user-profile-icon"
       />
-      <h1 className="failure-profile-heading">
+      <p className="failure-user-profile-heading">
         Something went wrong. Please try again
-      </h1>
+      </p>
       <button
         type="button"
         className="btn btn-primary"
         onClick={this.onClickRetry}
       >
-        Retry
+        Try again
       </button>
     </div>
   )

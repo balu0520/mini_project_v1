@@ -1,0 +1,41 @@
+.failure-user-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.failure-user-profile-icon {
+  height: 274px;
+  width: 560px;
+}
+.failure-user-profile-heading {
+  font-family: 'Roboto';
+  font-size: 32px;
+}
+@media screen and (max-width: 991px) {
+  .failure-user-profile-icon {
+    height: 200px;
+    width: 400px;
+  }
+  .failure-user-profile-heading {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .failure-user-profile-icon {
+    height: 157px;
+    width: 360px;
+  }
+  .failure-user-profile-heading {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .failure-user-profile-icon {
+    height: 127px;
+    width: 260px;
+  }
+  .failure-user-profile-heading {
+    font-size: 20px;
+  }
+}

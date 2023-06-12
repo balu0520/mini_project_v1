@@ -22,7 +22,7 @@ class MyProfile extends Component {
   getProfileData = data => ({
     id: data.id,
     userId: data.user_id,
-    userName: data.userName,
+    userName: data.user_name,
     profilePic: data.profile_pic,
     followersCount: data.followers_count,
     followingCount: data.following_count,
@@ -73,15 +73,15 @@ class MyProfile extends Component {
         alt="failure view"
         className="failure-profile-icon"
       />
-      <h1 className="failure-profile-heading">
+      <p className="failure-profile-heading">
         Something went wrong. Please try again
-      </h1>
+      </p>
       <button
         type="button"
         className="btn btn-primary"
         onClick={this.onClickRetry}
       >
-        Retry
+        Try again
       </button>
     </div>
   )
