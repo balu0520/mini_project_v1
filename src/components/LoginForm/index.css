@@ -48,8 +48,12 @@
   }
 }
 @media screen and (max-width: 991px) {
-  .login-website-logo-desktop-image {
+  /* .login-website-logo-desktop-image {
     display: none;
+  } */
+  .login-website-logo-desktop-image {
+    width: 165px;
+    margin-top: 50px;
   }
   .login-image {
     display: none;

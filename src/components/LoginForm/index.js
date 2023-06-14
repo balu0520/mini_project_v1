@@ -97,14 +97,14 @@ class LoginForm extends Component {
     }
     return (
       <div className="login-form-container">
-        <div className="mobile-view">
+        {/* <div className="mobile-view">
           <img
             src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686373787/My%20Brand/website_logo_gin18w.png"
             className="login-website-logo-mobile-image"
             alt="website logo"
           />
           <h1 className="mobile-view-heading">Insta Share</h1>
-        </div>
+        </div> */}
         <img
           src="https://res.cloudinary.com/daz94wyq4/image/upload/v1686374044/website_login_tyjz8m.png"
           className="login-image"
