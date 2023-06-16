@@ -18,74 +18,31 @@ const Profile = props => {
   const noPosts = postsCount === 0
   return (
     <div className="profile-container">
-      <div className="profile-desktop-view-container">
-        <img
-          src={profilePic}
-          className="profile-desktop-view-image"
-          alt="my profile"
-        />
-        <div className="profile-desktop-view-sub-container">
+      <h1 className="profile-mobile-view-heading">{userName}</h1>
+      <div className="profile-view-container">
+        <img src={profilePic} className="profile-view-image" alt="my profile" />
+        <div className="profile-view-sub-container">
           <h1 className="profile-desktop-view-heading">{userName}</h1>
-          <div className="profile-desktop-view-follow-container">
-            <div className="profile-desktop-view-follow-heading-container">
-              <h1 className="profile-desktop-view-follow-heading">
-                {postsCount}
-              </h1>
-              <p className="follow">posts</p>
+          <div className="profile-view-follow-container">
+            <div className="profile-view-follow-heading-container">
+              <h1 className="profile-view-follow-heading">{postsCount}</h1>
+              <p className="follow-para">posts</p>
             </div>
-            <div className="profile-desktop-view-follow-heading-container">
-              <h1 className="profile-desktop-view-follow-heading">
-                {followersCount}
-              </h1>
-              <p className="follow">followers</p>
+            <div className="profile-view-follow-heading-container">
+              <h1 className="profile-view-follow-heading">{followersCount}</h1>
+              <p className="follow-para">followers</p>
             </div>
-            <div className="profile-desktop-view-follow-heading-container">
-              <h1 className="profile-desktop-view-follow-heading">
-                {followingCount}
-              </h1>
-              <p className="follow">following</p>
+            <div className="profile-view-follow-heading-container">
+              <h1 className="profile-view-follow-heading">{followingCount}</h1>
+              <p className="follow-para">following</p>
             </div>
           </div>
           <p className="profile-desktop-view-sub-heading">{userId}</p>
           <p className="profile-desktop-view-user-bio">{userBio}</p>
         </div>
       </div>
-      <div className="profile-mobile-view-main-container">
-        <h1 className="profile-mobile-view-heading">{userName}</h1>
-        <div className="profile-mobile-view-container">
-          <div className="profile-mobile-view-sub-container">
-            <img
-              src={profilePic}
-              alt="my profile"
-              className="profile-mobile-view-image"
-            />
-            <div className="profile-mobile-view-follow-container">
-              <h1 className="profile-mobile-view-follow-heading">
-                {postsCount}
-              </h1>
-              <h1 className="profile-mobile-view-follow-heading-1">Posts</h1>
-            </div>
-            <div className="profile-mobile-view-follow-container">
-              <h1 className="profile-mobile-view-follow-heading">
-                {followersCount}
-              </h1>
-              <h1 className="profile-mobile-view-follow-heading-1">
-                followers
-              </h1>
-            </div>
-            <div className="profile-mobile-view-follow-container">
-              <h1 className="profile-mobile-view-follow-heading">
-                {followingCount}
-              </h1>
-              <h1 className="profile-mobile-view-follow-heading-1">
-                following
-              </h1>
-            </div>
-          </div>
-          <h1 className="profile-mobile-view-sub-heading">{userName}</h1>
-          <h1 className="profile-mobile-view-user-bio">{userBio}</h1>
-        </div>
-      </div>
+      <p className="profile-mobile-view-sub-heading">{userId}</p>
+      <p className="profile-mobile-view-user-bio">{userBio}</p>
       <ul className="profile-story-container mt-2 mb-2 d-flex flex-row">
         {stories.map(eachStory => (
           <li className="profile-story-sub-container mr-2" key={eachStory.id}>

@@ -61,7 +61,7 @@ class MyProfile extends Component {
   //  testid="loader"
 
   renderMyProfileLoadingView = () => (
-    <div className="loader-container" testid="loader">
+    <div className="loader-container-my-profile" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )

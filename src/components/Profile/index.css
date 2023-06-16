@@ -2,10 +2,16 @@
   width: 80%;
   margin: auto;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
   .profile-container {
     width: 100%;
     margin: auto;
+  }
+  .profile-view-follow-container {
+    /* text-align: center; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
 .profile-mobile-view-heading {
@@ -13,56 +19,58 @@
   font-size: 16px;
   font-weight: 500;
   padding-top: 10px;
+  padding-left: 20px;
 }
-.profile-mobile-view-follow-heading-1 {
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: 400;
-}
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 992px) {
   .profile-mobile-view-heading {
     display: none;
   }
+  .profile-view-follow-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-view-follow-heading-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10px;
+    width: 60%;
+  }
+  .follow-para {
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 3px;
+  }
 }
-.profile-desktop-view-container {
+.profile-view-container {
   display: flex;
   align-items: center;
   margin-top: 10px;
+  padding-left: 20px;
+  width: 100%;
 }
 
-.profile-desktop-view-image {
+.profile-view-image {
   width: 180px;
   height: 180px;
   border-radius: 50%;
 }
-.profile-desktop-view-sub-container {
+
+.profile-view-sub-container {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
+  width: 100%;
 }
 .profile-desktop-view-heading {
   font-family: 'Roboto';
   font-size: 32px;
 }
-.profile-desktop-view-follow-container {
-  display: flex;
-  flex-direction: row;
-}
-.profile-desktop-view-follow-heading-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-right: 10px;
-  width: 60%;
-}
-.profile-desktop-view-follow-heading {
+
+.profile-view-follow-heading {
   font-size: 16px;
   font-family: 'Roboto';
-}
-.follow {
-  font-weight: 400;
-  padding-left: 3px;
 }
 .profile-desktop-view-sub-heading {
   font-size: 16px;
@@ -72,26 +80,21 @@
 }
 
 @media screen and (max-width: 991px) {
-  .profile-desktop-view-container {
-    display: none;
-  }
   .profile-desktop-view-follow-container {
-    display: none;
+    text-align: center;
   }
-  .profile-desktop-view-image {
-    display: none;
-  }
-  .profile-desktop-view-sub-container {
-    display: none;
+  .profile-view-image {
+    width: 96px;
+    height: 96px;
   }
   .profile-desktop-view-heading {
     display: none;
   }
-  .profile-desktop-view-follow-heading-container {
-    display: none;
+  .profile-view-follow-heading-container {
+    text-align: center;
   }
-  .follow {
-    display: none;
+  .follow-para {
+    font-size: 12px;
   }
   .profile-desktop-view-sub-heading {
     display: none;
@@ -100,40 +103,7 @@
     display: none;
   }
 }
-
-.profile-mobile-view-main-container {
-  padding-left: 20px;
-}
-
-.profile-mobile-view-sub-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-@media screen and (min-width: 991px) {
-  .profile-mobile-view-main-container {
-    display: none;
-  }
-  .profile-mobile-view-container {
-    display: none;
-  }
-
-  .profile-mobile-view-sub-container {
-    display: none;
-  }
-  .profile-mobile-view-image {
-    display: none;
-  }
-  .profile-mobile-view-follow-container {
-    display: none;
-  }
-  .profile-mobile-view-follow-heading {
-    display: none;
-  }
+@media screen and (min-width: 992px) {
   .profile-mobile-view-follow-heading1 {
     display: none;
   }
@@ -144,17 +114,6 @@
     display: none;
   }
 }
-.profile-mobile-view-image {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-}
-.profile-mobile-view-follow-container {
-  text-align: center;
-}
-.profile-mobile-view-follow-heading {
-  font-size: 16px;
-}
 .profile-mobile-view-follow-heading1 {
   font-size: 16px;
   font-weight: 400;
@@ -162,10 +121,13 @@
 .profile-mobile-view-sub-heading {
   font-size: 16px;
   font-weight: 500;
+  padding-left: 20px;
 }
 .profile-mobile-view-user-bio {
   font-size: 14px;
   font-weight: 400;
+  padding-left: 20px;
+  margin-top: 5px;
 }
 .profile-story-sub-container {
   border-radius: 50%;
